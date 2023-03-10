@@ -1,0 +1,20 @@
+# docker-compose.yml
+
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:11.5
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=pass123
+      - POSTGRES_DB=jira_development
+    ports:
+      -5432:5432
+    networks:
+      - shared-network
+    volumes:
+      - ./postgres_db/data:/var/lib/postgressql/data
+
+networks:
+  shared-network
